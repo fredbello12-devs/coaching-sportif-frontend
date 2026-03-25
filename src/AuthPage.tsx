@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
-import logoSport from "./assets/logo-sport.png"; // Assure-toi que le fichier est bien dans /src/assets/
+import logoSport from "./logo-sport.png"; 
 
 type AuthMode = "login" | "register" | "reset";
 
