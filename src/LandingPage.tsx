@@ -561,6 +561,214 @@ function Hero() {
     </section>
   );
 }
+// ─── TICKER ──────────────────────────────────────────────────────────────────
+
+function Ticker() {
+  const items = [...tickerItems, ...tickerItems];
+  return (
+    <div
+      className="overflow-hidden py-4"
+      style={{ background: "linear-gradient(135deg,#FF4D00,#FFB800)" }}
+    >
+      <div
+        style={{
+          display: "flex",
+          width: "max-content",
+          animation: "ticker 22s linear infinite",
+        }}
+      >
+        {items.map((item, i) => (
+          <span
+            key={i}
+            className="font-display text-xl tracking-widest text-black whitespace-nowrap px-10"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+      <style>{`
+        @keyframes ticker {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+// ─── PROGRAMMES ──────────────────────────────────────────────────────────────
+
+function Programmes() {
+  return (
+    <section id="programmes" className="py-24 bg-[#0A0A0A] relative">
+      <div className="absolute left-0 top-1/2 w-96 h-96 bg-orange-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div>
+            <span className="font-heading text-orange-500 text-sm tracking-widest uppercase mb-3 block">
+              — Nos Programmes
+            </span>
+            <h2 className="font-display text-6xl md:text-7xl text-white leading-none">
+              CHOISIS
+              <br />
+              <span
+                style={{
+                  background: "linear-gradient(135deg,#FF4D00,#FFB800)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                TON DÉFI
+              </span>
+            </h2>
+          </div>
+          <p className="font-body text-white/50 max-w-xs leading-relaxed">
+            Des programmes conçus par des experts certifiés, adaptés à chaque
+            profil et chaque objectif.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {programmes.map((prog) => {
+            const Icon = prog.icon;
+            return (
+              <div
+                key={prog.title}
+                className="group relative bg-[#111] border border-white/5 rounded-2xl p-6 transition-all duration-500 hover:border-orange-500/30 hover:bg-[#131313] hover:-translate-y-1 cursor-pointer"
+              >
+                {/* Tag */}
+                <span
+                  className="inline-block text-xs font-heading font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-4"
+                  style={{
+                    backgroundColor: `${prog.color}20`,
+                    color: prog.color,
+                  }}
+                >
+                  {prog.tag}
+                </span>
+
+                {/* Icon */}
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundColor: `${prog.color}15` }}
+                >
+                  <Icon size={22} style={{ color: prog.color }} />
+                </div>
+
+                <h3 className="font-display text-2xl text-white tracking-wider mb-1">
+                  {prog.title}
+                </h3>
+                <p className="font-heading text-xs text-white/40 tracking-widest uppercase mb-3">
+                  {prog.subtitle}
+                </p>
+                <p className="font-body text-sm text-white/50 leading-relaxed mb-5">
+                  {prog.description}
+                </p>
+
+                {/* Meta */}
+                <div className="space-y-2 border-t border-white/5 pt-4">
+                  {[
+                    { l: "Durée", v: prog.duration },
+                    { l: "Rythme", v: prog.sessions },
+                    { l: "Niveau", v: prog.level },
+                  ].map((m) => (
+                    <div key={m.l} className="flex justify-between">
+                      <span className="font-body text-xs text-white/30">
+                        {m.l}
+                      </span>
+                      <span className="font-body text-xs text-white/70">
+                        {m.v}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="absolute top-5 right-5 w-8 h-8 rounded-full border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all group-hover:border-orange-500/50">
+                  <ArrowUpRight size={14} className="text-orange-500" />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-10 text-center">
+          <a
+            href="/register"
+            className="inline-flex items-center gap-2 font-heading text-sm tracking-widest uppercase text-white/40 hover:text-orange-500 transition-colors border-b border-white/10 hover:border-orange-500/50 pb-1"
+          >
+            Voir tous les programmes <ArrowUpRight size={14} />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── STATS ───────────────────────────────────────────────────────────────────
+
+function Stats() {
+  return (
+    <section
+      id="resultats"
+      className="py-20 bg-[#0F0F0F] border-y border-white/5"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <span className="font-heading text-orange-500 text-sm tracking-widest uppercase mb-3 block">
+            — Nos Résultats
+          </span>
+          <h2 className="font-display text-5xl md:text-6xl text-white">
+            DES CHIFFRES QUI{" "}
+            <span
+              style={{
+                background: "linear-gradient(135deg,#FF4D00,#FFB800)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              PARLENT
+            </span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((s) => {
+            const Icon = s.icon;
+            return (
+              <div
+                key={s.label}
+                className="bg-[#111] border border-white/5 rounded-2xl p-8 text-center hover:border-orange-500/20 transition-all duration-300"
+              >
+                <div
+                  className="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center"
+                  style={{ backgroundColor: `${s.color}15` }}
+                >
+                  <Icon size={24} style={{ color: s.color }} />
+                </div>
+                <div
+                  className="font-display text-4xl md:text-5xl mb-2"
+                  style={{
+                    background: "linear-gradient(135deg,#FF4D00,#FFB800)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  {s.value}
+                </div>
+                <p className="font-body text-sm text-white/40 leading-tight">
+                  {s.label}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
 function Coachs() {
   return (
     <section id="coachs" className="py-24 bg-[#080808] relative">
