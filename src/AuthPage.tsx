@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, User } from "lucide-react";
+import logoSport from "./logo-sport.png"; // 🔹 Assure-toi que ton image est dans /src/assets/
 
 type AuthMode = "login" | "register" | "reset";
 
@@ -25,7 +26,7 @@ export default function AuthPage() {
 
   return (
     <div className="flex min-h-screen bg-[#0A0A0A] text-white">
-      {/* Sidebar */}
+      {/* Sidebar gauche */}
       <div className="hidden md:flex w-64 bg-[#111] border-r border-white/10 flex-col items-center justify-center">
         <User size={40} className="text-orange-500 mb-4" />
         <h2 className="font-display text-xl">Coaching Sportif</h2>
@@ -139,6 +140,11 @@ export default function AuthPage() {
             )}
           </div>
         </form>
+      </div>
+
+      {/* Colonne image à droite */}
+      <div className="hidden lg:flex flex-1 items-center justify-center bg-[#111]">
+        <img src={logoSport} alt="Logo Coaching Sportif" className="max-w-md rounded-xl shadow-lg" />
       </div>
     </div>
   );
