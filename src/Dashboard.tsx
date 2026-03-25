@@ -1,5 +1,4 @@
 import { Zap, BarChart, Calendar, User } from "lucide-react";
-import { useState } from "react";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   BarChart as RBarChart, Bar, PieChart, Pie, Cell
@@ -73,11 +72,6 @@ const COLORS = ["#FF4D00", "#FFB800", "#FF8800", "#FF6600"];
 
 // 🔹 Dashboard principal
 export default function Dashboard() {
-  const [sessions] = useState(3);
-  const [weight] = useState(72);
-  const [goal] = useState(68);
-  const [nextSession] = useState("Vendredi 18h");
-
   return (
     <div className="flex min-h-screen bg-[#0A0A0A] text-white">
       {/* Sidebar */}

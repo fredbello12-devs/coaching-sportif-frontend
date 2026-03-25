@@ -1,11 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   ArrowRight,
   Play,
-  ChevronDown,
-  Zap,
-  Menu,
-  X,
   Flame,
   Dumbbell,
   Wind,
@@ -20,12 +16,7 @@ import {
   Clock,
   ArrowUpRight,
   Quote,
-  Share2,
-  Globe,
-  Tv,
-  Mail,
-  Phone,
-  MapPin,
+  Zap,
 } from "lucide-react";
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
@@ -81,13 +72,6 @@ interface Faq {
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
-const navLinks = [
-  { label: "Programmes", href: "#programmes" },
-  { label: "Coachs", href: "#coachs" },
-  { label: "Résultats", href: "#resultats" },
-  { label: "Tarifs", href: "#tarifs" },
-  { label: "FAQ", href: "#faq" },
-];
 
 const tickerItems = [
   "🏆 TRANSFORME TON CORPS",
