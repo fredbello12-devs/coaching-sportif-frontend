@@ -1,27 +1,29 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LandingPage from "./LandingPage";
+import { Route, Routes, useLocation } from "react-router-dom";
 import AuthPage from "./AuthPage";
 import Dashboard from "./Dashboard";
+import Footer from "./Footer";
+import LandingPage from "./LandingPage";
+import Navbar from "./Navbar";
 
-function App() {
+function Layout() {
+  const location = useLocation();
+  const hideNavFooter = ["/login", "/register", "/reset"].includes(location.pathname);
+
   return (
-    <Router>
-      <div className="min-h-screen flex flex-col bg-[#0A0A0A]">
-        <main className="flex-grow">
-          <Routes>
-            {/* Page principale */}
-            <Route path="/" element={<LandingPage />} />
+    <div className="min-h-screen flex flex-col bg-[#0A0A0A]">
+      {!hideNavFooter && <Navbar />}
 
-            {/* Authentification */}
-            <Route path="/auth" element={<AuthPage />} />
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<AuthPage />} />
+          <Route path="/register" element={<AuthPage />} />
+          <Route path="/reset" element={<AuthPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </main>
 
-            {/* Dashboard */}
-            <Route path="/dashboard" element={<Dashboard />} />
-          </Routes>
-        </main>
-      </div>
-    </Router>
+      {!hideNavFooter && <Footer />}
+    </div>
   );
 }
-
-export default App;

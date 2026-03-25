@@ -1,13 +1,15 @@
 import { Zap, BarChart, Calendar, User } from "lucide-react";
+import { useState } from "react";
 
-// 🔹 Card réutilisable
+// 🔹 Type pour les cartes
 type CardProps = {
   title: string;
   value: string;
-  icon?: React.ReactNode;
+  icon: React.ReactNode;
   description?: string;
 };
 
+// 🔹 Composant Card réutilisable
 const Card = ({ title, value, icon, description }: CardProps) => {
   return (
     <div className="bg-[#111] p-6 rounded-xl border border-white/10">
@@ -24,7 +26,7 @@ const Card = ({ title, value, icon, description }: CardProps) => {
 const Sidebar = () => {
   return (
     <div className="w-64 bg-[#0A0A0A] text-white p-6 border-r border-white/10">
-      <h2 className="text-xl font-bold mb-6">Mon App</h2>
+      <h2 className="text-xl font-bold mb-6">Coaching Sportif</h2>
       <ul className="space-y-4">
         <li className="hover:text-orange-500 cursor-pointer">Dashboard</li>
         <li className="hover:text-orange-500 cursor-pointer">Profil</li>
@@ -36,6 +38,12 @@ const Sidebar = () => {
 
 // 🔹 Dashboard principal
 export default function Dashboard() {
+  // States dynamiques simulant des données
+  const [sessions] = useState(3);
+  const [weight] = useState(72);
+  const [goal] = useState(68);
+  const [nextSession] = useState("Vendredi 18h");
+
   return (
     <div className="flex min-h-screen bg-[#0A0A0A] text-white">
       {/* Sidebar */}
@@ -56,19 +64,19 @@ export default function Dashboard() {
         <main className="p-6 grid md:grid-cols-3 gap-6">
           <Card
             title="Progression"
-            value="3 séances"
+            value={`${sessions} séances`}
             icon={<Zap size={18} className="text-orange-500" />}
-            description="Tu as complété 3 séances cette semaine 💪"
+            description="Tu as complété tes séances cette semaine 💪"
           />
           <Card
             title="Statistiques"
-            value="72kg"
+            value={`${weight} kg`}
             icon={<BarChart size={18} className="text-orange-500" />}
-            description="Objectif : 68kg"
+            description={`Objectif : ${goal} kg`}
           />
           <Card
             title="Planning"
-            value="Vendredi 18h"
+            value={nextSession}
             icon={<Calendar size={18} className="text-orange-500" />}
             description="Prochaine séance prévue"
           />
