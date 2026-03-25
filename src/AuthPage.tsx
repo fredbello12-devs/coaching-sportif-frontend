@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ArrowRight, User } from "lucide-react";
-import logoSport from "./logo-sport.png"; // 🔹 Assure-toi que ton image est dans /src/assets/
+import { ArrowRight } from "lucide-react";
+import logoSport from "./assets/logo-sport.png"; // Assure-toi que le fichier est bien dans /src/assets/
 
 type AuthMode = "login" | "register" | "reset";
 
@@ -26,18 +26,23 @@ export default function AuthPage() {
 
   return (
     <div className="flex min-h-screen bg-[#0A0A0A] text-white">
-      {/* Sidebar gauche */}
-      <div className="hidden md:flex w-64 bg-[#111] border-r border-white/10 flex-col items-center justify-center">
-        <User size={40} className="text-orange-500 mb-4" />
-        <h2 className="font-display text-xl">Coaching Sportif</h2>
-        <p className="text-white/40 text-sm mt-2">Ton espace personnel</p>
+      {/* Image animée à gauche */}
+      <div className="hidden lg:flex flex-1 items-center justify-center bg-[#111]">
+        <div className="relative group animate-fade-in">
+          <img
+            src={logoSport}
+            alt="Logo Coaching Sportif"
+            className="max-w-md rounded-xl shadow-lg transition duration-500 group-hover:scale-105 group-hover:shadow-orange-500"
+          />
+          <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-500 blur-lg bg-gradient-to-r from-orange-500 via-yellow-500 to-orange-500"></div>
+        </div>
       </div>
 
-      {/* Formulaire principal */}
-      <div className="flex-1 flex items-center justify-center">
+      {/* Formulaire à droite */}
+      <div className="flex-1 flex items-center justify-center px-4">
         <form
           onSubmit={handleSubmit}
-          className="bg-[#111] p-10 rounded-2xl shadow-lg w-full max-w-md"
+          className="bg-[#111] p-10 rounded-2xl shadow-lg w-full max-w-md animate-fade-in"
         >
           <h1 className="font-display text-2xl text-white mb-6 text-center">
             {mode === "login" && "Connexion Coaching Sportif"}
@@ -140,11 +145,6 @@ export default function AuthPage() {
             )}
           </div>
         </form>
-      </div>
-
-      {/* Colonne image à droite */}
-      <div className="hidden lg:flex flex-1 items-center justify-center bg-[#111]">
-        <img src={logoSport} alt="Logo Coaching Sportif" className="max-w-md rounded-xl shadow-lg" />
       </div>
     </div>
   );
