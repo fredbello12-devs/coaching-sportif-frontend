@@ -38,7 +38,7 @@ export default function Footer() {
               {[Share2, Globe, Tv].map((Icon, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href="/"
                   className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center text-white/40 hover:text-orange-500 hover:border-orange-500/30 transition-all"
                 >
                   <Icon size={16} />
@@ -53,18 +53,21 @@ export default function Footer() {
               Plateforme
             </h4>
             <ul className="space-y-3">
-              {["Nos Programmes", "Nos Coachs", "Tarifs", "Témoignages"].map(
-                (l) => (
-                  <li key={l}>
-                    <a
-                      href="#"
-                      className="font-body text-sm text-white/40 hover:text-orange-500 transition-colors"
-                    >
-                      {l}
-                    </a>
-                  </li>
-                )
-              )}
+              {[
+                { label: "Nos Programmes", href: "/" },
+                { label: "Nos Coachs", href: "/" },
+                { label: "Tarifs", href: "/" },
+                { label: "Témoignages", href: "/" },
+              ].map(({ label, href }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    className="font-body text-sm text-white/40 hover:text-orange-500 transition-colors"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -78,7 +81,7 @@ export default function Footer() {
                 { label: "Connexion", href: "/login" },
                 { label: "Inscription", href: "/register" },
                 { label: "Mon Dashboard", href: "/dashboard" },
-                { label: "Paramètres", href: "#" },
+                { label: "Paramètres", href: "/dashboard" },
               ].map(({ label, href }) => (
                 <li key={label}>
                   <a
@@ -121,13 +124,17 @@ export default function Footer() {
             © 2025 Coaching Sportif. Tous droits réservés.
           </p>
           <div className="flex gap-6">
-            {["Confidentialité", "CGU", "Mentions légales"].map((l) => (
+            {[
+              { label: "Confidentialité", href: "/" },
+              { label: "CGU", href: "/" },
+              { label: "Mentions légales", href: "/" },
+            ].map(({ label, href }) => (
               <a
-                key={l}
-                href="#"
+                key={label}
+                href={href}
                 className="font-body text-xs text-white/20 hover:text-white/50 transition-colors"
               >
-                {l}
+                {label}
               </a>
             ))}
           </div>

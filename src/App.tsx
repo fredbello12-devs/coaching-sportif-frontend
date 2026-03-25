@@ -1,9 +1,9 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import LandingPage from "./LandingPage";
 import AuthPage from "./AuthPage";
 import Dashboard from "./Dashboard";
-import Footer from "./Footer";
-import LandingPage from "./LandingPage";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function Layout() {
   const location = useLocation();
@@ -27,3 +27,13 @@ function Layout() {
     </div>
   );
 }
+
+function App() {
+  return (
+    <Router>
+      <Layout />
+    </Router>
+  );
+}
+
+export default App; 
