@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LandingPage from "./LandingPage";
+import LandingPage from "./landingpage";
 import AuthPage from "./AuthPage";
-import DashboardPage from "./Dashboard";
+import Dashboard from "./Dashboard";
 
 function App() {
   return (
@@ -9,18 +9,16 @@ function App() {
       <div className="min-h-screen flex flex-col bg-[#0A0A0A]">
         <main className="flex-grow">
           <Routes>
-            {/* Page principale (Landing) */}
+            {/* Page principale */}
             <Route path="/" element={<LandingPage />} />
 
             {/* Authentification */}
             <Route path="/auth" element={<AuthPage />} />
 
             {/* Dashboard */}
-            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </main>
-
-        {/* Footer global (déjà inclus dans LandingPage, donc pas besoin ici) */}
       </div>
     </Router>
   );
