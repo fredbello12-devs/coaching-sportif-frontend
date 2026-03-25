@@ -1,5 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
+import LandingPage from "./src/LandingPage";
+import auth from "./src/auth";
+import DashboardPage from "./src/Dashboard";
 
 // ------------------ Navbar Responsive ------------------
 function Navbar() {
@@ -67,7 +70,7 @@ function AuthPage() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
       <form onSubmit={handleSubmit} className="bg-white shadow-xl rounded-xl p-8 w-full max-w-md">
-        <img src="/assets/logo.png" alt="Coaching Sportif" className="mx-auto mb-4 w-20 h-20" />
+        <img src="logo-sport.png" alt="Coaching Sportif" className="mx-auto mb-4 w-20 h-20" />
 
         <h2 className="text-2xl font-bold text-center text-blue-600 mb-6">
           {mode === "login" && "Connexion Coaching Sportif"}
