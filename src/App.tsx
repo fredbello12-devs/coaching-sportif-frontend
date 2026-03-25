@@ -7,7 +7,9 @@ import Footer from "./Footer";
 
 function Layout() {
   const location = useLocation();
-  const hideNavFooter = ["/login", "/register", "/reset"].includes(location.pathname);
+
+  // 🔹 Ici tu ajoutes la ligne
+  const hideNavFooter = ["/login", "/register", "/reset", "/dashboard"].includes(location.pathname);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#0A0A0A]">
@@ -28,12 +30,10 @@ function Layout() {
   );
 }
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Layout />
     </Router>
   );
 }
-
-export default App; 
