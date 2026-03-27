@@ -15,12 +15,20 @@ export default function AuthPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (mode === "login") {
-      console.log("Login:", { email, password });
+      // ✅ Simule une connexion réussie
+      alert(`Bienvenue ${email} ! Connexion réussie.`);
     } else if (mode === "register") {
-      console.log("Register:", { name, role, email, password, confirmPassword });
+      if (password !== confirmPassword) {
+        alert("Les mots de passe ne correspondent pas !");
+        return;
+      }
+      // ✅ Simule une inscription réussie
+      alert(`Compte créé pour ${name} (${role}) avec l'email ${email}.`);
     } else {
-      console.log("Reset password:", { email });
+      // ✅ Simule un reset password
+      alert(`Un lien de réinitialisation a été envoyé à ${email}.`);
     }
   };
 
