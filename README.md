@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+# Coaching Sportif Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application React (Create React App) pour le tableau de bord coach sportif.
 
-## Available Scripts
+## Prérequis
 
-In the project directory, you can run:
+- Node.js 20+
+- npm
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm install
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Configuration
 
-### `npm test`
+Créez un fichier `.env` à la racine du projet :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```env
+REACT_APP_API_URL=http://localhost:3001
+```
 
-### `npm run build`
+## Lancement
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm run dev
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+L’application démarre sur http://localhost:3000.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Fonctionnalités
 
-### `npm run eject`
+- Connexion via `POST /auth/login` (token JWT stocké dans `localStorage`)
+- Affichage des utilisateurs via `GET /users`
+- Création d’utilisateurs via `POST /users` (rôle admin requis)
+- Affichage des séances via `GET /sessions`
+- Création de séances via `POST /sessions`
+- Affichage des paiements via `GET /payments`
+- Création de paiements via `POST /payments` (rôle admin requis)
+- Affichage météo via `GET /weather/:city` (ex. Dakar, Paris)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Tests backend recommandés
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Backend NestJS démarré sur http://localhost:3001 :
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+cd ../coaching-sportif-backend
+npm install
+npm run seed
+npm run start:dev
+```

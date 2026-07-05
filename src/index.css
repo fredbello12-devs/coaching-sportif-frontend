@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import './styles/theme.css';
+
 @keyframes fade-in {
   from {
     opacity: 0;

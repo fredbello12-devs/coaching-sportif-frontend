@@ -1,39 +1,29 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import LandingPage from "./LandingPage";
-import AuthPage from "./AuthPage";
-import Dashboard from "./Dashboard";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-
-function Layout() {
-  const location = useLocation();
-
-  // 🔹 Ici tu ajoutes la ligne
-  const hideNavFooter = ["/login", "/register", "/reset", "/dashboard"].includes(location.pathname);
-
-  return (
-    <div className="min-h-screen flex flex-col bg-[#0A0A0A]">
-      {!hideNavFooter && <Navbar />}
-
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<AuthPage />} />
-          <Route path="/register" element={<AuthPage />} />
-          <Route path="/reset" element={<AuthPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
-      </main>
-
-      {!hideNavFooter && <Footer />}
-    </div>
-  );
-}
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import LandingPage from "./pages/LandingPage";
+import AuthPage from "./pages/AuthPage";
+import DashboardPage from "./pages/DashboardPage";
+import ProfilePage from "./pages/ProfilePage";
+import PrivateRoute from "./components/PrivateRoute";
+import { AppProvider } from "./context/AppContext";
 
 export default function App() {
   return (
-    <Router>
-      <Layout />
-    </Router>
+    <AppProvider>
+      <Router>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<AuthPage />} />
+            <Route path="/register" element={<AuthPage />} />
+            <Route path="/reset" element={<AuthPage />} />
+            <Route element={<PrivateRoute />}>
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+            </Route>
+          </Route>
+        </Routes>
+      </Router>
+    </AppProvider>
   );
 }
