@@ -52,11 +52,11 @@ export default function DashboardPage() {
   const [weatherCity, setWeatherCity] = useState("Dakar");
   const [loading, setLoading] = useState(true);
 
-  const [newUser, setNewUser] = useState({ name: "", email: "", password: "", role: "sportif" });
+  const [newUser, setNewUser] = useState({ name: "", email: "", password: "", role: "USER" });
   const [newSession, setNewSession] = useState({ title: "", description: "", date: "", durationMinutes: "" });
   const [newPayment, setNewPayment] = useState({ amount: "", currency: "EUR", userEmail: "" });
 
-  const isAdmin = user?.role === "admin";
+  const isAdmin = user?.role === "ADMIN";
 
   const fetchData = async () => {
     setLoading(true);
@@ -84,7 +84,7 @@ export default function DashboardPage() {
     event.preventDefault();
     try {
       await createUser(newUser);
-      setNewUser({ name: "", email: "", password: "", role: "sportif" });
+      setNewUser({ name: "", email: "", password: "", role: "USER" });
       fetchData();
     } catch (error) {
       window.alert(error instanceof Error ? error.message : "Erreur lors de la création de l'utilisateur");
@@ -265,9 +265,9 @@ export default function DashboardPage() {
                 <input value={newUser.email} onChange={(e) => setNewUser({ ...newUser, email: e.target.value })} placeholder="Email" className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white outline-none" />
                 <input value={newUser.password} onChange={(e) => setNewUser({ ...newUser, password: e.target.value })} placeholder="Mot de passe" type="password" className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white outline-none" />
                 <select value={newUser.role} onChange={(e) => setNewUser({ ...newUser, role: e.target.value })} className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white outline-none">
-                  <option value="sportif">Sportif</option>
-                  <option value="coach">Coach</option>
-                  <option value="admin">Admin</option>
+                  <option value="USER">Sportif</option>
+                  <option value="COACH">Coach</option>
+                  <option value="ADMIN">Admin</option>
                 </select>
                 <button type="submit" className="rounded-full bg-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-black">Créer utilisateur</button>
               </form>
