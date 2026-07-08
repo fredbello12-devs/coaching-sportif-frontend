@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
-import { loginUser } from "../services/api";
+import { loginUser, createUser } from "../services/api";
 import logoSport from "../logo-sport.png";
 
 type AuthMode = "login" | "register" | "reset";
@@ -13,7 +13,7 @@ export default function AuthPage() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole] = useState("sportif");
+  const [role, setRole] = useState("USER");
   const navigate = useNavigate();
   const { login } = useAppContext();
 
@@ -38,6 +38,7 @@ export default function AuthPage() {
 
     if (mode === "register") {
       try {
+        await createUser({ name, email, password, role });
         const authResponse = await loginUser(email, password);
         login(authResponse.access_token, authResponse.user);
         navigate("/dashboard");
@@ -78,8 +79,8 @@ export default function AuthPage() {
               <>
                 <input value={name} onChange={(event) => setName(event.target.value)} placeholder="Nom complet" className="mb-4 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none ring-0" />
                 <select value={role} onChange={(event) => setRole(event.target.value)} className="mb-4 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none">
-                  <option value="sportif">Sportif</option>
-                  <option value="coach">Coach</option>
+                  <option value="USER">Sportif</option>
+                  <option value="COACH">Coach</option>
                 </select>
               </>
             )}
